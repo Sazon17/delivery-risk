@@ -1,0 +1,41 @@
+stages:
+  split:
+    cmd: python src/delivery_risk/data/split_batches.py
+    deps:
+      - src/delivery_risk/data/split_batches.py
+      - data/raw/olist
+    params:
+      - configs/params.yaml:
+          - split
+    outs:
+      - data/interim
+      - data/incoming
+
+  validate:
+    cmd: python src/delivery_risk/data/validate.py
+    deps:
+      - src/delivery_risk/data/validate.py
+      - src/delivery_risk/data/expectations.py
+      - src/delivery_risk/data/history.py
+      - src/delivery_risk/data/io.py
+      - data/interim
+      - data/incoming
+    params:
+      - configs/params.yaml:
+          - quality
+    metrics:
+      - reports/validation.json:
+          cache: false
+
+  eda:
+    cmd: python src/delivery_risk/eda/run_eda.py
+    deps:
+      - src/delivery_risk/eda/run_eda.py
+      - src/delivery_risk/data/geo.py
+      - data/interim
+      - data/raw/olist
+    outs:
+      - reports/figures
+    metrics:
+      - reports/eda_summary.json:
+          cache: false

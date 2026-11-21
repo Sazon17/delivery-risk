@@ -1,0 +1,6 @@
+outs:
+- md5: 39a4d372f1e11efe7861ad5d93520e02.dir
+  size: 125143791
+  nfiles: 9
+  hash: md5
+  path: olist

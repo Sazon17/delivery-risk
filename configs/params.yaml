@@ -1,0 +1,18 @@
+split:
+  raw_dir: data/raw/olist
+  initial_end: "2018-04-01"        # заказы, оформленные раньше этой даты, - исходная часть
+  batch_months: ["2018-04", "2018-05", "2018-06", "2018-07", "2018-08"]
+
+quality:
+  max_items: 21
+  min_promise_days: 1
+  long_promise_days: 60
+  long_promise_share: 0.01
+  max_items_price: 7000
+  max_freight: 500
+  payment_types: [credit_card, boleto, voucher, debit_card]
+  max_no_geo_share: 0.02
+  max_no_category_share: 0.03
+  new_seller_ratio: 1.5
+  late_rate_jump_pp: 5.0
+  min_seller_history: 5

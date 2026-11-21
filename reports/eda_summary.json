@@ -1,0 +1,371 @@
+{
+ "orders": 65988,
+ "labelled": 64315,
+ "late": 5112,
+ "late_rate": 7.95,
+ "status_unlabelled": {
+  "shipped": 802,
+  "canceled": 340,
+  "processing": 286,
+  "invoiced": 235,
+  "unavailable": 6,
+  "approved": 2,
+  "delivered": 2
+ },
+ "approval_median_min": 18.3,
+ "promise_days": {
+  "min": 8,
+  "median": 24.0,
+  "max": 156
+ },
+ "share_customer_sp": 39.96,
+ "share_interstate": 66.19,
+ "share_single_item": 90.05,
+ "items_price_median": 85.0,
+ "sellers": 2184,
+ "categories": 72,
+ "payment_share": {
+  "credit_card": 75.06,
+  "boleto": 20.62,
+  "voucher": 3.29,
+  "debit_card": 1.03
+ },
+ "repeat_buyer_orders": 6.09,
+ "monthly": {
+  "2017-01": [
+   2.93,
+   39.0
+  ],
+  "2017-02": [
+   2.96,
+   31.0
+  ],
+  "2017-03": [
+   4.56,
+   23.0
+  ],
+  "2017-04": [
+   6.56,
+   26.0
+  ],
+  "2017-05": [
+   2.99,
+   24.0
+  ],
+  "2017-06": [
+   3.03,
+   24.0
+  ],
+  "2017-07": [
+   2.79,
+   24.0
+  ],
+  "2017-08": [
+   2.91,
+   23.0
+  ],
+  "2017-09": [
+   4.39,
+   23.0
+  ],
+  "2017-10": [
+   4.18,
+   23.0
+  ],
+  "2017-11": [
+   12.4,
+   23.0
+  ],
+  "2017-12": [
+   7.46,
+   28.0
+  ],
+  "2018-01": [
+   5.7,
+   26.0
+  ],
+  "2018-02": [
+   14.12,
+   25.0
+  ],
+  "2018-03": [
+   18.97,
+   22.0
+  ]
+ },
+ "mann_whitney": {
+  "dist_km": {
+   "late_median": 555.0,
+   "ontime_median": 443.4,
+   "p": 1.0220751165837385e-98
+  },
+  "promise_days": {
+   "late_median": 24.0,
+   "ontime_median": 24.0,
+   "p": 0.001817673873632055
+  },
+  "items_freight": {
+   "late_median": 18.1,
+   "ontime_median": 16.6,
+   "p": 7.513671288606511e-97
+  },
+  "weight_g_total": {
+   "late_median": 850.0,
+   "ontime_median": 800.0,
+   "p": 3.4237696624706485e-05
+  },
+  "items_price": {
+   "late_median": 90.5,
+   "ontime_median": 85.0,
+   "p": 7.268914596685952e-14
+  }
+ },
+ "slices": {
+  "distance": {
+   "<=100": 3.93,
+   "100-500": 7.58,
+   "500-1000": 8.71,
+   "1000-2000": 10.87,
+   ">2000": 13.1
+  },
+  "customer_state": {
+   "AC": 3.12,
+   "AL": 24.91,
+   "AM": 3.96,
+   "AP": 4.35,
+   "BA": 12.82,
+   "CE": 16.0,
+   "DF": 6.65,
+   "ES": 11.42,
+   "GO": 7.82,
+   "MA": 19.28,
+   "MG": 5.28,
+   "MS": 9.98,
+   "MT": 8.01,
+   "PA": 11.37,
+   "PB": 11.9,
+   "PE": 10.46,
+   "PI": 13.6,
+   "PR": 4.72,
+   "RJ": 15.49,
+   "RN": 9.82,
+   "RO": 3.89,
+   "RR": 14.29,
+   "RS": 7.61,
+   "SC": 10.67,
+   "SE": 17.08,
+   "SP": 4.77,
+   "TO": 10.22
+  },
+  "approval": {
+   "<=1": 7.38,
+   "1-24": 8.55,
+   "24-48": 9.06,
+   ">48": 10.54
+  },
+  "load_quartile": {
+   "Q1": 3.66,
+   "Q2": 3.61,
+   "Q3": 10.18,
+   "Q4": 14.42
+  }
+ },
+ "weekday_chi2_p": 0.01,
+ "spearman": {
+  "dist_km": {
+   "dist_km": 1.0,
+   "promise_days": 0.65,
+   "items_freight": 0.58,
+   "items_price": 0.09,
+   "weight_g_total": 0.02,
+   "volume_cm3_total": 0.01,
+   "approval_h": 0.03,
+   "is_late": 0.08
+  },
+  "promise_days": {
+   "dist_km": 0.65,
+   "promise_days": 1.0,
+   "items_freight": 0.48,
+   "items_price": 0.1,
+   "weight_g_total": 0.07,
+   "volume_cm3_total": 0.06,
+   "approval_h": 0.01,
+   "is_late": -0.01
+  },
+  "items_freight": {
+   "dist_km": 0.58,
+   "promise_days": 0.48,
+   "items_freight": 1.0,
+   "items_price": 0.48,
+   "weight_g_total": 0.51,
+   "volume_cm3_total": 0.43,
+   "approval_h": 0.03,
+   "is_late": 0.08
+  },
+  "items_price": {
+   "dist_km": 0.09,
+   "promise_days": 0.1,
+   "items_freight": 0.48,
+   "items_price": 1.0,
+   "weight_g_total": 0.55,
+   "volume_cm3_total": 0.43,
+   "approval_h": -0.01,
+   "is_late": 0.03
+  },
+  "weight_g_total": {
+   "dist_km": 0.02,
+   "promise_days": 0.07,
+   "items_freight": 0.51,
+   "items_price": 0.55,
+   "weight_g_total": 1.0,
+   "volume_cm3_total": 0.78,
+   "approval_h": -0.01,
+   "is_late": 0.02
+  },
+  "volume_cm3_total": {
+   "dist_km": 0.01,
+   "promise_days": 0.06,
+   "items_freight": 0.43,
+   "items_price": 0.43,
+   "weight_g_total": 0.78,
+   "volume_cm3_total": 1.0,
+   "approval_h": -0.01,
+   "is_late": 0.01
+  },
+  "approval_h": {
+   "dist_km": 0.03,
+   "promise_days": 0.01,
+   "items_freight": 0.03,
+   "items_price": -0.01,
+   "weight_g_total": -0.01,
+   "volume_cm3_total": -0.01,
+   "approval_h": 1.0,
+   "is_late": 0.05
+  },
+  "is_late": {
+   "dist_km": 0.08,
+   "promise_days": -0.01,
+   "items_freight": 0.08,
+   "items_price": 0.03,
+   "weight_g_total": 0.02,
+   "volume_cm3_total": 0.01,
+   "approval_h": 0.05,
+   "is_late": 1.0
+  }
+ },
+ "hypotheses": {
+  "G1": {
+   "rates": [
+    9.66,
+    4.61
+   ],
+   "within_state": {
+    "or": 1.41,
+    "ci": [
+     1.28,
+     1.57
+    ],
+    "p": 0.0
+   },
+   "with_distance": {
+    "or": 1.11,
+    "ci": [
+     0.98,
+     1.26
+    ],
+    "p": 0.106
+   }
+  },
+  "G2": {
+   "rates": [
+    9.37,
+    6.83
+   ],
+   "adjusted": {
+    "or": 0.56,
+    "ci": [
+     0.53,
+     0.58
+    ],
+    "p": 0.0
+   },
+   "raw": {
+    "or": 0.93,
+    "ci": [
+     0.91,
+     0.96
+    ],
+    "p": 0.0
+   }
+  },
+  "G3": {
+   "rates": {
+    "bad": 12.53,
+    "good": 7.87,
+    "none": 6.57
+   },
+   "bad": {
+    "or": 1.34,
+    "ci": [
+     1.21,
+     1.48
+    ],
+    "p": 0.0
+   },
+   "none": {
+    "or": 1.09,
+    "ci": [
+     1.0,
+     1.18
+    ],
+    "p": 0.049
+   }
+  },
+  "G4": {
+   "rates": [
+    9.48,
+    7.63
+   ],
+   "adjusted": {
+    "or": 1.37,
+    "ci": [
+     1.27,
+     1.48
+    ],
+    "p": 0.0
+   },
+   "boleto_slow": 57.48,
+   "card_slow": 6.68
+  },
+  "G5": {
+   "rates": [
+    9.01,
+    7.78
+   ],
+   "adjusted": {
+    "or": 1.32,
+    "ci": [
+     1.22,
+     1.44
+    ],
+    "p": 0.0
+   }
+  },
+  "G6": {
+   "quartiles": {
+    "Q1": 3.66,
+    "Q2": 3.61,
+    "Q3": 10.18,
+    "Q4": 14.42
+   },
+   "adjusted": {
+    "or": 1.67,
+    "ci": [
+     1.57,
+     1.76
+    ],
+    "p": 0.0
+   }
+  }
+ }
+}

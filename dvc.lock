@@ -1,0 +1,120 @@
+schema: '2.0'
+stages:
+  split:
+    cmd: python src/delivery_risk/data/split_batches.py
+    deps:
+    - path: data/raw/olist
+      hash: md5
+      md5: 39a4d372f1e11efe7861ad5d93520e02.dir
+      size: 125143791
+      nfiles: 9
+    - path: src/delivery_risk/data/split_batches.py
+      hash: md5
+      md5: 79e2ad25c59e4e6b8d0e45cd7ad2f53a
+      size: 6060
+    params:
+      configs/params.yaml:
+        split:
+          raw_dir: data/raw/olist
+          initial_end: '2018-04-01'
+          batch_months:
+          - 2018-04
+          - 2018-05
+          - 2018-06
+          - 2018-07
+          - 2018-08
+    outs:
+    - path: data/incoming
+      hash: md5
+      md5: a2064cb99a6258cf21358e44c1205d9d.dir
+      size: 13250813
+      nfiles: 10
+    - path: data/interim
+      hash: md5
+      md5: a5579193898f6d347d1f8b8246efb0c6.dir
+      size: 26817787
+      nfiles: 2
+  validate:
+    cmd: python src/delivery_risk/data/validate.py
+    deps:
+    - path: data/incoming
+      hash: md5
+      md5: a2064cb99a6258cf21358e44c1205d9d.dir
+      size: 13250813
+      nfiles: 10
+    - path: data/interim
+      hash: md5
+      md5: a5579193898f6d347d1f8b8246efb0c6.dir
+      size: 26817787
+      nfiles: 2
+    - path: src/delivery_risk/data/expectations.py
+      hash: md5
+      md5: e55bf0c770ba859455697028d845d7a1
+      size: 4668
+    - path: src/delivery_risk/data/history.py
+      hash: md5
+      md5: 28330b739fde0367e6e33be400f7f94b
+      size: 3730
+    - path: src/delivery_risk/data/io.py
+      hash: md5
+      md5: f0a09e0d044431186108df660f75cd75
+      size: 1528
+    - path: src/delivery_risk/data/validate.py
+      hash: md5
+      md5: 7efeabe9ba50911405e5fbb44066436d
+      size: 4825
+    params:
+      configs/params.yaml:
+        quality:
+          max_items: 21
+          min_promise_days: 1
+          long_promise_days: 60
+          long_promise_share: 0.01
+          max_items_price: 7000
+          max_freight: 500
+          payment_types:
+          - credit_card
+          - boleto
+          - voucher
+          - debit_card
+          max_no_geo_share: 0.02
+          max_no_category_share: 0.03
+          new_seller_ratio: 1.5
+          late_rate_jump_pp: 5.0
+          min_seller_history: 5
+    outs:
+    - path: reports/validation.json
+      hash: md5
+      md5: 6e79dfe90b074f1b6de810f30dae329c
+      size: 2906
+  eda:
+    cmd: python src/delivery_risk/eda/run_eda.py
+    deps:
+    - path: data/interim
+      hash: md5
+      md5: a5579193898f6d347d1f8b8246efb0c6.dir
+      size: 26817787
+      nfiles: 2
+    - path: data/raw/olist
+      hash: md5
+      md5: 39a4d372f1e11efe7861ad5d93520e02.dir
+      size: 125143791
+      nfiles: 9
+    - path: src/delivery_risk/data/geo.py
+      hash: md5
+      md5: 447cdaad79374e3fe9fb3b7537d47091
+      size: 2315
+    - path: src/delivery_risk/eda/run_eda.py
+      hash: md5
+      md5: 71667575354a6a89d04eaf04a7c460fb
+      size: 9815
+    outs:
+    - path: reports/eda_summary.json
+      hash: md5
+      md5: da6f7d53f6ce20feb8f98ffa1e808a06
+      size: 5568
+    - path: reports/figures
+      hash: md5
+      md5: 01ec2ec196b246c010e0f3dd4ac03305.dir
+      size: 53544
+      nfiles: 1
