@@ -11,3 +11,5 @@ matplotlib
 pyyaml
 pyarrow
 pytest
+joblib
+mlflow

@@ -1,0 +1,443 @@
+{
+ "train_rows": 50737,
+ "test_rows": 13555,
+ "train_late": 0.0563,
+ "test_late": 0.1662,
+ "folds": [
+  {
+   "month": "2017-09",
+   "train": 19113,
+   "valid": 4149,
+   "late": 0.0439
+  },
+  {
+   "month": "2017-10",
+   "train": 23384,
+   "valid": 4478,
+   "late": 0.0418
+  },
+  {
+   "month": "2017-11",
+   "train": 27395,
+   "valid": 7288,
+   "late": 0.124
+  },
+  {
+   "month": "2017-12",
+   "train": 31926,
+   "valid": 5513,
+   "late": 0.0746
+  },
+  {
+   "month": "2018-01",
+   "train": 39004,
+   "valid": 7069,
+   "late": 0.057
+  }
+ ],
+ "lr_path": [
+  {
+   "C": 0.001,
+   "penalty": "l2",
+   "lift": 1.6455,
+   "pr_auc": 0.1032,
+   "roc_auc": 0.625,
+   "nonzero": 144,
+   "n_coef": 144
+  },
+  {
+   "C": 0.001,
+   "penalty": "l1",
+   "lift": 1.0296,
+   "pr_auc": 0.0699,
+   "roc_auc": 0.512,
+   "nonzero": 1,
+   "n_coef": 144
+  },
+  {
+   "C": 0.003,
+   "penalty": "l2",
+   "lift": 1.6914,
+   "pr_auc": 0.1034,
+   "roc_auc": 0.6179,
+   "nonzero": 144,
+   "n_coef": 144
+  },
+  {
+   "C": 0.003,
+   "penalty": "l1",
+   "lift": 1.1048,
+   "pr_auc": 0.0741,
+   "roc_auc": 0.5251,
+   "nonzero": 4,
+   "n_coef": 144
+  },
+  {
+   "C": 0.01,
+   "penalty": "l2",
+   "lift": 1.7505,
+   "pr_auc": 0.1053,
+   "roc_auc": 0.6172,
+   "nonzero": 144,
+   "n_coef": 144
+  },
+  {
+   "C": 0.01,
+   "penalty": "l1",
+   "lift": 1.7245,
+   "pr_auc": 0.1061,
+   "roc_auc": 0.6167,
+   "nonzero": 14,
+   "n_coef": 144
+  },
+  {
+   "C": 0.03,
+   "penalty": "l2",
+   "lift": 1.7931,
+   "pr_auc": 0.107,
+   "roc_auc": 0.619,
+   "nonzero": 144,
+   "n_coef": 144
+  },
+  {
+   "C": 0.03,
+   "penalty": "l1",
+   "lift": 1.7004,
+   "pr_auc": 0.1023,
+   "roc_auc": 0.6082,
+   "nonzero": 23,
+   "n_coef": 144
+  },
+  {
+   "C": 0.1,
+   "penalty": "l2",
+   "lift": 1.8627,
+   "pr_auc": 0.11,
+   "roc_auc": 0.6192,
+   "nonzero": 144,
+   "n_coef": 144
+  },
+  {
+   "C": 0.1,
+   "penalty": "l1",
+   "lift": 1.8314,
+   "pr_auc": 0.1084,
+   "roc_auc": 0.6183,
+   "nonzero": 45,
+   "n_coef": 144
+  },
+  {
+   "C": 0.3,
+   "penalty": "l2",
+   "lift": 1.9011,
+   "pr_auc": 0.1116,
+   "roc_auc": 0.6179,
+   "nonzero": 144,
+   "n_coef": 144
+  },
+  {
+   "C": 0.3,
+   "penalty": "l1",
+   "lift": 1.9429,
+   "pr_auc": 0.1134,
+   "roc_auc": 0.6189,
+   "nonzero": 69,
+   "n_coef": 144
+  },
+  {
+   "C": 1.0,
+   "penalty": "l2",
+   "lift": 1.8991,
+   "pr_auc": 0.1115,
+   "roc_auc": 0.6158,
+   "nonzero": 144,
+   "n_coef": 144
+  },
+  {
+   "C": 1.0,
+   "penalty": "l1",
+   "lift": 1.9269,
+   "pr_auc": 0.1128,
+   "roc_auc": 0.6178,
+   "nonzero": 96,
+   "n_coef": 144
+  },
+  {
+   "C": 3.0,
+   "penalty": "l2",
+   "lift": 1.8904,
+   "pr_auc": 0.1111,
+   "roc_auc": 0.6148,
+   "nonzero": 144,
+   "n_coef": 144
+  },
+  {
+   "C": 3.0,
+   "penalty": "l1",
+   "lift": 1.8439,
+   "pr_auc": 0.1091,
+   "roc_auc": 0.6153,
+   "nonzero": 119,
+   "n_coef": 144
+  }
+ ],
+ "lr_top_coef": {
+  "cat__customer_state_AL": 1.368,
+  "cat__customer_state_MG": -1.026,
+  "num__promise_days": -0.976,
+  "cat__customer_state_SP": -0.924,
+  "cat__customer_state_MS": -0.905,
+  "cat__product_category_name_construcao_ferramentas_iluminacao": 0.844,
+  "cat__customer_state_SE": 0.808,
+  "cat__customer_state_PR": -0.807,
+  "cat__product_category_name_market_place": -0.798,
+  "cat__product_category_name_moveis_cozinha_area_de_servico_jantar_e_jardim": -0.773,
+  "cat__seller_state_MT": -0.746,
+  "cat__product_category_name_dvds_blu_ray": 0.724,
+  "cat__product_category_name_cine_foto": 0.694,
+  "cat__seller_state_ES": 0.682,
+  "cat__customer_state_TO": -0.672,
+  "cat__customer_state_AM": -0.668
+ },
+ "lr_new_coef": {
+  "dist_km": 0.424,
+  "promise_rel": 0.315,
+  "seller_late_rate": 0.113,
+  "seller_n_matured_log": -0.027,
+  "slow_approval": 0.069,
+  "heavy": -0.093,
+  "load_7d": 0.427,
+  "freight_ratio": 0.083
+ },
+ "tree_depth": [
+  {
+   "depth": 1,
+   "valid_pr_auc": 0.07301137359414296,
+   "train_pr_auc": 0.0528463694038227,
+   "train_lift": 1.3024621056003671,
+   "valid_lift": 1.099336347510155
+  },
+  {
+   "depth": 2,
+   "valid_pr_auc": 0.0796362539892845,
+   "train_pr_auc": 0.06851499335247402,
+   "train_lift": 1.6703240593502404,
+   "valid_lift": 1.1861413117017536
+  },
+  {
+   "depth": 3,
+   "valid_pr_auc": 0.08463154856689983,
+   "train_pr_auc": 0.08621190999853443,
+   "train_lift": 2.093867775758424,
+   "valid_lift": 1.2699423976463204
+  },
+  {
+   "depth": 4,
+   "valid_pr_auc": 0.09208694411161408,
+   "train_pr_auc": 0.10461216171396408,
+   "train_lift": 2.5523831016568486,
+   "valid_lift": 1.443524188442894
+  },
+  {
+   "depth": 5,
+   "valid_pr_auc": 0.09301049628843162,
+   "train_pr_auc": 0.1263767928292277,
+   "train_lift": 3.097717492779786,
+   "valid_lift": 1.4641659956651516
+  },
+  {
+   "depth": 6,
+   "valid_pr_auc": 0.09109692821567786,
+   "train_pr_auc": 0.14999270593957675,
+   "train_lift": 3.679732519779713,
+   "valid_lift": 1.4302645030120735
+  },
+  {
+   "depth": 7,
+   "valid_pr_auc": 0.0896688985439978,
+   "train_pr_auc": 0.17611516164681104,
+   "train_lift": 4.326586867132019,
+   "valid_lift": 1.3984705753236522
+  },
+  {
+   "depth": 8,
+   "valid_pr_auc": 0.0953119878565879,
+   "train_pr_auc": 0.20496647047759628,
+   "train_lift": 5.0430971153327135,
+   "valid_lift": 1.4665327372244255
+  },
+  {
+   "depth": 10,
+   "valid_pr_auc": 0.09793795159117852,
+   "train_pr_auc": 0.2609082576295899,
+   "train_lift": 6.438362103749318,
+   "valid_lift": 1.4897849118506072
+  },
+  {
+   "depth": 12,
+   "valid_pr_auc": 0.09585557808561543,
+   "train_pr_auc": 0.3351215067332271,
+   "train_lift": 8.353809089156282,
+   "valid_lift": 1.4216809842160902
+  },
+  {
+   "depth": 15,
+   "valid_pr_auc": 0.09142474701971741,
+   "train_pr_auc": 0.4454591033161023,
+   "train_lift": 11.231325816958293,
+   "valid_lift": 1.3968003220481247
+  },
+  {
+   "depth": 20,
+   "valid_pr_auc": 0.0803339310050939,
+   "train_pr_auc": 0.6540586693341679,
+   "train_lift": 16.72662788619877,
+   "valid_lift": 1.2033528778166849
+  },
+  {
+   "depth": "нет",
+   "valid_pr_auc": 0.07353956618716581,
+   "train_pr_auc": 1.0,
+   "train_lift": 25.970778246386498,
+   "valid_lift": 1.0875642008060056
+  }
+ ],
+ "tree_best_depth": 10,
+ "gb_search": {
+  "combinations": 24,
+  "best": {
+   "learning_rate": 0.03,
+   "max_iter": 200,
+   "max_leaf_nodes": 15,
+   "min_samples_leaf": 20
+  },
+  "best_lift": 1.9334
+ },
+ "gb_search_top": [
+  {
+   "params": "{'model__learning_rate': 0.03, 'model__max_iter': 200, 'model__max_leaf_nodes': 15, 'model__min_samples_leaf': 20}",
+   "mean_test_score": 1.933448724487618
+  },
+  {
+   "params": "{'model__learning_rate': 0.03, 'model__max_iter': 400, 'model__max_leaf_nodes': 15, 'model__min_samples_leaf': 20}",
+   "mean_test_score": 1.9236774872103393
+  },
+  {
+   "params": "{'model__learning_rate': 0.03, 'model__max_iter': 200, 'model__max_leaf_nodes': 31, 'model__min_samples_leaf': 20}",
+   "mean_test_score": 1.8779500666324414
+  },
+  {
+   "params": "{'model__learning_rate': 0.03, 'model__max_iter': 400, 'model__max_leaf_nodes': 31, 'model__min_samples_leaf': 20}",
+   "mean_test_score": 1.8605158255932923
+  },
+  {
+   "params": "{'model__learning_rate': 0.06, 'model__max_iter': 200, 'model__max_leaf_nodes': 31, 'model__min_samples_leaf': 20}",
+   "mean_test_score": 1.8453490123311762
+  }
+ ],
+ "lr_search": {
+  "combinations": 10,
+  "best": {
+   "C": 0.3,
+   "class_weight": "balanced"
+  },
+  "results": [
+   {
+    "C": 0.03,
+    "cw": "None",
+    "lift": 1.7931
+   },
+   {
+    "C": 0.03,
+    "cw": "balanced",
+    "lift": 1.8768
+   },
+   {
+    "C": 0.1,
+    "cw": "None",
+    "lift": 1.8627
+   },
+   {
+    "C": 0.1,
+    "cw": "balanced",
+    "lift": 1.9055
+   },
+   {
+    "C": 0.3,
+    "cw": "None",
+    "lift": 1.9011
+   },
+   {
+    "C": 0.3,
+    "cw": "balanced",
+    "lift": 1.9063
+   },
+   {
+    "C": 1.0,
+    "cw": "None",
+    "lift": 1.8991
+   },
+   {
+    "C": 1.0,
+    "cw": "balanced",
+    "lift": 1.8581
+   },
+   {
+    "C": 3.0,
+    "cw": "None",
+    "lift": 1.8904
+   },
+   {
+    "C": 3.0,
+    "cw": "balanced",
+    "lift": 1.8153
+   }
+  ]
+ },
+ "lr_drop_one": {
+  "dist_km": -0.0718,
+  "promise_rel": 0.0014,
+  "seller_late_rate": -0.0018,
+  "seller_n_matured_log": -0.0089,
+  "slow_approval": -0.0005,
+  "heavy": 0.0047,
+  "load_7d": 0.0831,
+  "freight_ratio": -0.0012
+ },
+ "mutual_info": {
+  "load_7d": 0.0129,
+  "n_sellers": 0.0123,
+  "seller_late_rate": 0.0077,
+  "promise_rel": 0.0066,
+  "n_items": 0.006,
+  "freight_ratio": 0.0057,
+  "log_items_freight": 0.0046,
+  "log_volume": 0.0045,
+  "log_items_price": 0.0036,
+  "log_payment_value": 0.0036,
+  "approval_h": 0.0032,
+  "seller_n_matured_log": 0.0024,
+  "ship_limit_days": 0.0023,
+  "dist_km": 0.0023,
+  "log_weight": 0.0022,
+  "heavy": 0.0014,
+  "slow_approval": 0.0009,
+  "promise_days": 0.0006,
+  "payment_installments": 0.0004
+ },
+ "drop_one": {
+  "dist_km": -0.0659,
+  "promise_rel": -0.003,
+  "seller_late_rate": -0.0035,
+  "seller_n_matured_log": 0.0684,
+  "slow_approval": 0.0097,
+  "heavy": -0.0033,
+  "load_7d": -0.1956,
+  "freight_ratio": 0.0199
+ },
+ "dropped": [
+  "seller_n_matured_log",
+  "slow_approval",
+  "freight_ratio"
+ ]
+}

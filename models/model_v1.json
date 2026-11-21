@@ -1,0 +1,47 @@
+{
+ "version": "v1",
+ "trained_as_of": "2018-02-01",
+ "data": {
+  "file": "data/processed/initial.parquet",
+  "md5": "3677e6273365ac34b50c24e791df5965",
+  "orders_purchased_before": "2018-02-01",
+  "rows_used": 44469,
+  "late_rate": 0.0556,
+  "rows_not_matured": 6268
+ },
+ "test": {
+  "rows": 13555,
+  "from": "2018-02-01",
+  "used_in": "ПР4"
+ },
+ "experiment": "Градиентный бустинг (после подбора), без seller_n_matured_log, slow_approval, freight_ratio",
+ "family": "gb",
+ "params": {
+  "learning_rate": 0.03,
+  "max_iter": 200,
+  "max_leaf_nodes": 15,
+  "min_samples_leaf": 20,
+  "drop": [
+   "seller_n_matured_log",
+   "slow_approval",
+   "freight_ratio"
+  ]
+ },
+ "cv": {
+  "scheme": "помесячные блоки 2017-09, 2017-10, 2017-11, 2017-12, 2018-01",
+  "lift": 2.0182,
+  "lift_std": 0.5253,
+  "pr_auc": 0.1303,
+  "roc_auc": 0.6684,
+  "recall_at_precision_0.25": 0.091,
+  "best_lift_all_models": 2.0316
+ },
+ "random_state": 42,
+ "python_packages": {
+  "scikit-learn": "1.9.1",
+  "pandas": "3.1.0",
+  "numpy": "2.4.6"
+ },
+ "features_step": "src/delivery_risk/features/pipeline.py",
+ "prepare_step": "src/delivery_risk/features/prepare.py"
+}

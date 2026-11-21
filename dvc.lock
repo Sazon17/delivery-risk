@@ -118,3 +118,208 @@ stages:
       md5: 01ec2ec196b246c010e0f3dd4ac03305.dir
       size: 53544
       nfiles: 1
+  features:
+    cmd: python src/delivery_risk/features/prepare.py
+    deps:
+    - path: data/incoming
+      hash: md5
+      md5: a2064cb99a6258cf21358e44c1205d9d.dir
+      size: 13250813
+      nfiles: 10
+    - path: data/interim
+      hash: md5
+      md5: a5579193898f6d347d1f8b8246efb0c6.dir
+      size: 26817787
+      nfiles: 2
+    - path: src/delivery_risk/data
+      hash: md5
+      md5: b602111288df569f4385ae7b4b7cc193.dir
+      size: 60998
+      nfiles: 14
+    - path: src/delivery_risk/features/prepare.py
+      hash: md5
+      md5: 9ad40d6890418da05ae9237d5d4ce098
+      size: 5380
+    params:
+      configs/params.yaml:
+        quality:
+          max_items: 21
+          min_promise_days: 1
+          long_promise_days: 60
+          long_promise_share: 0.01
+          max_items_price: 7000
+          max_freight: 500
+          payment_types:
+          - credit_card
+          - boleto
+          - voucher
+          - debit_card
+          max_no_geo_share: 0.02
+          max_no_category_share: 0.03
+          new_seller_ratio: 1.5
+          late_rate_jump_pp: 5.0
+          min_seller_history: 5
+    outs:
+    - path: data/processed
+      hash: md5
+      md5: 6bb71b252fbbef39264b9916c75dd49d.dir
+      size: 8079119
+      nfiles: 6
+  experiments:
+    cmd: python src/delivery_risk/models/experiments.py
+    deps:
+    - path: data/processed
+      hash: md5
+      md5: 6bb71b252fbbef39264b9916c75dd49d.dir
+      size: 8079119
+      nfiles: 6
+    - path: src/delivery_risk/features/pipeline.py
+      hash: md5
+      md5: f3bec0f1303bc73a7dca4813f8ebaff6
+      size: 4713
+    - path: src/delivery_risk/models/experiments.py
+      hash: md5
+      md5: 95ef4c5b6fae0ab1a58f2a73a078e78e
+      size: 15206
+    - path: src/delivery_risk/models/split.py
+      hash: md5
+      md5: 0f2569dada72bc11efadf22ab138583b
+      size: 2562
+    params:
+      configs/params.yaml:
+        train:
+          random_state: 42
+          run_date: '2026-11-20'
+          test_start: '2018-02-01'
+          cv_months:
+          - 2017-09
+          - 2017-10
+          - 2017-11
+          - 2017-12
+          - 2018-01
+          min_precision: 0.25
+          lr_C:
+          - 0.001
+          - 0.003
+          - 0.01
+          - 0.03
+          - 0.1
+          - 0.3
+          - 1.0
+          - 3.0
+          lr_report_C: 1.0
+          lr_grid_C:
+          - 0.03
+          - 0.1
+          - 0.3
+          - 1.0
+          - 3.0
+          knn_k: 50
+          tree_depths:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          - 8
+          - 10
+          - 12
+          - 15
+          - 20
+          gb_grid:
+            learning_rate:
+            - 0.03
+            - 0.06
+            - 0.1
+            max_leaf_nodes:
+            - 15
+            - 31
+            min_samples_leaf:
+            - 20
+            - 100
+            max_iter:
+            - 200
+            - 400
+          select_tolerance: 0.1
+          drop_gain: 0.005
+    outs:
+    - path: reports/experiments.csv
+      hash: md5
+      md5: 70cca4c4748d8c35c2917d07ef2b0563
+      size: 6644
+    - path: reports/pr3/summary.json
+      hash: md5
+      md5: c527465507c3e1c350ac1620a7ad4de8
+      size: 8975
+  train:
+    cmd: python src/delivery_risk/models/train.py
+    deps:
+    - path: data/processed
+      hash: md5
+      md5: 6bb71b252fbbef39264b9916c75dd49d.dir
+      size: 8079119
+      nfiles: 6
+    - path: reports/experiments.csv
+      hash: md5
+      md5: 70cca4c4748d8c35c2917d07ef2b0563
+      size: 6644
+    - path: src/delivery_risk/features/pipeline.py
+      hash: md5
+      md5: f3bec0f1303bc73a7dca4813f8ebaff6
+      size: 4713
+    - path: src/delivery_risk/models/train.py
+      hash: md5
+      md5: a395882a21db61956f644932b588becd
+      size: 5308
+    params:
+      configs/params.yaml:
+        train.random_state: 42
+        train.select_tolerance: 0.1
+        train.test_start: '2018-02-01'
+    outs:
+    - path: models/model_v1.joblib
+      hash: md5
+      md5: af29738aff0ca1f9d3e77b00a7fe9328
+      size: 401842
+    - path: models/model_v1.json
+      hash: md5
+      md5: f46691e8729768c872a9de7731b7fafb
+      size: 1188
+  plots:
+    cmd: python src/delivery_risk/models/plots.py
+    deps:
+    - path: models/model_v1.json
+      hash: md5
+      md5: f46691e8729768c872a9de7731b7fafb
+      size: 1188
+    - path: reports/experiments.csv
+      hash: md5
+      md5: 70cca4c4748d8c35c2917d07ef2b0563
+      size: 6644
+    - path: reports/pr3/summary.json
+      hash: md5
+      md5: c527465507c3e1c350ac1620a7ad4de8
+      size: 8975
+    - path: src/delivery_risk/models/plots.py
+      hash: md5
+      md5: 8b368547a2290ec12a97f69626825e73
+      size: 7369
+    outs:
+    - path: reports/pr3/comparison.png
+      hash: md5
+      md5: d573ac4513566af5f4d2bd8283bdc9ff
+      size: 110656
+    - path: reports/pr3/folds.png
+      hash: md5
+      md5: c50ffc98b6253b2e9c6d0801fb1b430d
+      size: 85938
+    - path: reports/pr3/regularization.png
+      hash: md5
+      md5: 8233a412c0c397a79e2b2fcc50f78e1f
+      size: 71503
+    - path: reports/pr3/tree_depth.png
+      hash: md5
+      md5: 638af6181e41c7614df7826c15bd047d
+      size: 57731

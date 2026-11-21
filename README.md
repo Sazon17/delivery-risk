@@ -10,6 +10,7 @@
 | Тег | Что сделано |
 |-----|-------------|
 | `pr2` | данные под DVC, разбиение на исходную часть и 5 порций, проверки Д1-Д13, разведочный анализ |
+| `pr3` | конвейер признаков, сравнение моделей по помесячным блокам, подбор, итоговая модель `models/model_v1` |
 
 ## Запуск
 
@@ -23,6 +24,9 @@ dvc repro
 pytest
 ```
 
+`requirements.txt` собран командой `pip-compile --generate-hashes` под Python 3.11 на Linux.
+Если на Windows pip-sync сообщит о недостающем пакете, достаточно `pip install -r requirements.in`.
+
 Хранилище DVC в учебном варианте - каталог `../dvc-storage` рядом с репозиторием.
 
 ## Структура
@@ -32,8 +36,23 @@ configs/params.yaml        границы порций, пороги прове�
 data/raw/olist.dvc         описатель исходных CSV (сами файлы - в DVC)
 src/delivery_risk/data     сборка строки заказа, разбиение, проверки, история продавца
 src/delivery_risk/eda      разведочный анализ
-tests/                     тесты проверок данных
-reports/                   validation.json, eda_summary.json
+src/delivery_risk/features prepare.py - любой файл заказов в таблицу для модели,
+                           pipeline.py - признаки и Pipeline (признаки -> предобработка -> модель)
+src/delivery_risk/models   split.py - выборки, блоки, метрики; experiments.py - сравнение;
+                           train.py - выбор и обучение итоговой модели; plots.py - графики
+tests/                     тесты проверок данных и признаков
+reports/                   validation.json, eda_summary.json, experiments.csv, pr3/
+models/model_v1.json       описание итоговой модели (сама модель - в DVC)
 ```
 
-Этапы конвейера описаны в `dvc.yaml`: split -> validate -> eda.
+Этапы конвейера описаны в `dvc.yaml`:
+split -> validate -> eda, features -> experiments -> train -> plots.
+
+Подготовить одну порцию для модели:
+
+```bash
+python src/delivery_risk/features/prepare.py data/incoming/batch_01.csv
+```
+
+Журнал экспериментов MLflow ведётся в локальной базе `mlflow.db`:
+`mlflow ui --backend-store-uri sqlite:///mlflow.db`.

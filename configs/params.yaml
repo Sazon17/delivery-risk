@@ -16,3 +16,22 @@ quality:
   new_seller_ratio: 1.5
   late_rate_jump_pp: 5.0
   min_seller_history: 5
+
+train:
+  random_state: 42
+  run_date: "2026-11-20"
+  test_start: "2018-02-01"        # заказы с этой даты - отложенная тестовая выборка (ПР4)
+  cv_months: ["2017-09", "2017-10", "2017-11", "2017-12", "2018-01"]
+  min_precision: 0.25
+  lr_C: [0.001, 0.003, 0.01, 0.03, 0.1, 0.3, 1.0, 3.0]
+  lr_report_C: 1.0
+  lr_grid_C: [0.03, 0.1, 0.3, 1.0, 3.0]
+  knn_k: 50
+  tree_depths: [1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 15, 20]
+  gb_grid:
+    learning_rate: [0.03, 0.06, 0.1]
+    max_leaf_nodes: [15, 31]
+    min_samples_leaf: [20, 100]
+    max_iter: [200, 400]
+  select_tolerance: 0.1           # модели, отстающие от лучшей меньше чем на 0,1 lift, считаются равными
+  drop_gain: 0.005                # признак убирается, если без него lift растёт больше чем на 0,005

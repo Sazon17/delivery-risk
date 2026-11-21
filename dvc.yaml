@@ -39,3 +39,68 @@ stages:
     metrics:
       - reports/eda_summary.json:
           cache: false
+
+  features:
+    cmd: python src/delivery_risk/features/prepare.py
+    deps:
+      - src/delivery_risk/features/prepare.py
+      - src/delivery_risk/data
+      - data/interim
+      - data/incoming
+    params:
+      - configs/params.yaml:
+          - quality
+    outs:
+      - data/processed
+
+  experiments:
+    cmd: python src/delivery_risk/models/experiments.py
+    deps:
+      - src/delivery_risk/models/experiments.py
+      - src/delivery_risk/models/split.py
+      - src/delivery_risk/features/pipeline.py
+      - data/processed
+    params:
+      - configs/params.yaml:
+          - train
+    outs:
+      - reports/experiments.csv:
+          cache: false
+    metrics:
+      - reports/pr3/summary.json:
+          cache: false
+
+  train:
+    cmd: python src/delivery_risk/models/train.py
+    deps:
+      - src/delivery_risk/models/train.py
+      - src/delivery_risk/features/pipeline.py
+      - reports/experiments.csv
+      - data/processed
+    params:
+      - configs/params.yaml:
+          - train.test_start
+          - train.select_tolerance
+          - train.random_state
+    outs:
+      - models/model_v1.joblib
+    metrics:
+      - models/model_v1.json:
+          cache: false
+
+  plots:
+    cmd: python src/delivery_risk/models/plots.py
+    deps:
+      - src/delivery_risk/models/plots.py
+      - reports/experiments.csv
+      - reports/pr3/summary.json
+      - models/model_v1.json
+    outs:
+      - reports/pr3/regularization.png:
+          cache: false
+      - reports/pr3/tree_depth.png:
+          cache: false
+      - reports/pr3/comparison.png:
+          cache: false
+      - reports/pr3/folds.png:
+          cache: false
