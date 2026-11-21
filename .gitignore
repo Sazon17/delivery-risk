@@ -1,0 +1,27 @@
+# окружение и служебные файлы
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+.idea/
+.vscode/
+
+# служебные файлы DVC (вместо .dvc/.gitignore)
+/.dvc/config.local
+/.dvc/tmp
+/.dvc/cache
+
+# данные и тяжёлые артефакты лежат в хранилище DVC, в Git - только описатели
+/data/raw/olist
+/data/interim
+/data/incoming
+/data/processed
+/reports/figures
+/reports/timing.json
+/models/*.joblib
+
+# журнал MLflow ведётся локально
+/mlruns
+/mlflow.db
